@@ -6,73 +6,82 @@
 <title>Call Center Report - Slide View</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-  body { background-color: #f4f9f9; color: #1f2937; }
-  .slide {
-    min-height: 75vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease-out, transform 1s ease-out, box-shadow 0.3s ease;
-    padding: 2rem 1rem;
-    border-radius: 1rem;
-  }
-  .slide:hover { transform: translateY(-5px); box-shadow: 0 15px 25px rgba(0,0,0,0.1); }
-  .slide.visible { opacity: 1; transform: translateY(0); }
-  .slide h2 { opacity:0; transform:translateY(10px); transition:opacity 1s, transform 1s; }
-  .slide.visible h2 { opacity:1; transform:translateY(0); }
-  .slide p { opacity:0; transform:translateY(5px); transition:opacity 1s, transform 1s; text-align:justify; }
-  .slide.visible p { opacity:1; transform:translateY(0); }
-  .slide img { opacity:0; transform:scale(0.98); transition:opacity 1s, transform 1s; }
-  .slide.visible img { opacity:1; transform:scale(1); }
-  .slide li { text-align: justify; }
-  a.cta-btn { background-color:#fcd34d; color:#1f2937; font-weight:600; padding:0.75rem 1.5rem; border-radius:0.5rem; transition: background 0.3s, transform 0.3s; }
-  a.cta-btn:hover { background-color:#fbbf24; transform: scale(1.03); }
-  h2 { color: #1e4f54; }
-  .slide:nth-child(even){ background-color: #f9fbfb; }
-  .slide:nth-child(odd){ background-color: #ffffff; }
+body { background-color: #f4f9f9; color: #1f2937; }
 
-  /* Navigation */
-  #navContainer { transition: opacity 0.3s; }
-  .nav-link.active { background-color:#fcd34d; color:#1f2937; font-weight:600; }
+/* Slides with reduced spacing */
+.slide {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out, box-shadow 0.3s ease;
+  padding: 1.5rem 1rem;
+  border-radius: 1rem;
+}
+.slide:hover { transform: translateY(-5px); box-shadow: 0 15px 25px rgba(0,0,0,0.1); }
+.slide.visible { opacity: 1; transform: translateY(0); }
+.slide h2 { opacity:0; transform:translateY(10px); transition:opacity 1s, transform 1s; }
+.slide.visible h2 { opacity:1; transform:translateY(0); }
+.slide p { opacity:0; transform:translateY(5px); transition:opacity 1s, transform 1s; text-align:justify; }
+.slide.visible p { opacity:1; transform:translateY(0); }
+.slide img { opacity:0; transform:scale(0.98); transition:opacity 1s, transform 1s; }
+.slide.visible img { opacity:1; transform:scale(1); }
+.slide li { text-align: justify; }
+a.cta-btn { background-color:#fcd34d; color:#1f2937; font-weight:600; padding:0.75rem 1.5rem; border-radius:0.5rem; transition: background 0.3s, transform 0.3s; }
+a.cta-btn:hover { background-color:#fbbf24; transform: scale(1.03); }
+h2 { color: #1e4f54; }
+.slide:nth-child(even){ background-color: #f9fbfb; }
+.slide:nth-child(odd){ background-color: #ffffff; }
 
-  /* Mobile handle */
-  #sidebarHandle { z-index:50; }
+/* Desktop Top Nav */
+.nav-top { display:none; }
+@media(min-width:768px) {
+  .nav-top { display:flex; justify-content:center; gap:1.5rem; position:fixed; top:0; left:50%; transform:translateX(-50%); background:rgba(255,255,255,0.3); color:#1e4f54; padding:0.75rem 1.5rem; border-radius:1rem; box-shadow:0 10px 20px rgba(0,0,0,0.15); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.4); z-index:50; }
+  .nav-top a { color:#1e4f54; font-weight:500; text-decoration:none; padding:0.5rem 0.75rem; border-radius:0.5rem; transition:0.3s; }
+  .nav-top a:hover, .nav-top a.active { background-color:#fcd34d; color:#1f2937; }
+
+  /* Increased space between top nav and first slide */
+  #slide1 { padding-top: 10rem; }
+}
+
+/* Mobile Sidebar */
+.nav-side { display:flex; flex-direction:column; position:fixed; top:0; left:0; height:100%; width:64; background:rgba(255,255,255,0.9); backdrop-filter:blur(10px); border-right:1px solid rgba(255,255,255,0.4); transform:translateX(-100%); transition:transform 0.3s; z-index:50; padding:1rem; gap:1rem; }
+.nav-side a { text-decoration:none; padding:0.5rem 0.75rem; border-radius:0.5rem; font-weight:500; color:#1e4f54; transition:0.3s; }
+.nav-side a:hover, .nav-side a.active { background-color:#fcd34d; color:#1f2937; }
+
+/* Sidebar handle */
+#sidebarHandle { position:fixed; top:50%; left:0; width:8px; height:48px; background:#fcd34d; border-radius:0 4px 4px 0; cursor:pointer; z-index:51; }
+@media(min-width:768px){ .nav-side, #sidebarHandle { display:none; } }
+
+/* Data structure image smaller */
+.data-img { width:10rem; height:auto; margin:0 auto; }
 </style>
 </head>
 <body class="font-sans leading-relaxed overflow-x-hidden">
 
-<!-- Navigation -->
-<div id="navContainer" class="fixed top-0 left-0 w-full z-50">
-  <!-- Desktop top nav -->
-  <div class="hidden md:flex justify-center w-full">
-    <div class="flex gap-6 bg-white/30 text-gray-800 p-3 rounded-b-lg shadow-md backdrop-blur-md border-b border-white/40">
-      <a href="#slide1" class="nav-link px-3 py-1 rounded hover:bg-yellow-300 hover:text-gray-900 transition">Project Background</a>
-      <a href="#slide2" class="nav-link px-3 py-1 rounded hover:bg-yellow-300 hover:text-gray-900 transition">Data Structure</a>
-      <a href="#slide3" class="nav-link px-3 py-1 rounded hover:bg-yellow-300 hover:text-gray-900 transition">Executive Summary</a>
-      <a href="#slide4" class="nav-link px-3 py-1 rounded hover:bg-yellow-300 hover:text-gray-900 transition">Insights</a>
-      <a href="#slide8" class="nav-link px-3 py-1 rounded hover:bg-yellow-300 hover:text-gray-900 transition">Recommendations</a>
-      <a href="#slide9" class="nav-link px-3 py-1 rounded hover:bg-yellow-300 hover:text-gray-900 transition">Expected Outcomes</a>
-    </div>
-  </div>
-
-  <!-- Mobile sidebar -->
-  <div class="md:hidden fixed top-0 left-0 h-full w-64 bg-white/90 shadow-lg backdrop-blur-md border-r border-white/40 -translate-x-full transition-transform duration-300" id="mobileSidebar">
-    <div class="flex flex-col p-4 gap-4">
-      <a href="#slide1" class="nav-link px-3 py-2 rounded hover:bg-yellow-300 hover:text-gray-900 transition">Project Background</a>
-      <a href="#slide2" class="nav-link px-3 py-2 rounded hover:bg-yellow-300 hover:text-gray-900 transition">Data Structure</a>
-      <a href="#slide3" class="nav-link px-3 py-2 rounded hover:bg-yellow-300 hover:text-gray-900 transition">Executive Summary</a>
-      <a href="#slide4" class="nav-link px-3 py-2 rounded hover:bg-yellow-300 hover:text-gray-900 transition">Insights</a>
-      <a href="#slide8" class="nav-link px-3 py-2 rounded hover:bg-yellow-300 hover:text-gray-900 transition">Recommendations</a>
-      <a href="#slide9" class="nav-link px-3 py-2 rounded hover:bg-yellow-300 hover:text-gray-900 transition">Expected Outcomes</a>
-    </div>
-  </div>
-
-  <!-- Mobile handle -->
-  <div id="sidebarHandle" class="md:hidden fixed top-1/2 left-0 h-12 w-2 bg-yellow-300 rounded-r cursor-pointer"></div>
+<!-- Desktop Top Nav -->
+<div class="nav-top">
+  <a href="#slide1">Project Background</a>
+  <a href="#slide2">Data Structure</a>
+  <a href="#slide3">Executive Summary</a>
+  <a href="#slide4">Insights</a>
+  <a href="#slide8">Recommendations</a>
+  <a href="#slide9">Expected Outcomes</a>
 </div>
+
+<!-- Mobile Sidebar -->
+<div class="nav-side" id="mobileSidebar">
+  <a href="#slide1">Project Background</a>
+  <a href="#slide2">Data Structure</a>
+  <a href="#slide3">Executive Summary</a>
+  <a href="#slide4">Insights</a>
+  <a href="#slide8">Recommendations</a>
+  <a href="#slide9">Expected Outcomes</a>
+</div>
+<div id="sidebarHandle"></div>
 
 <!-- Slides -->
 <section class="slide" id="slide1">
@@ -89,7 +98,7 @@
     <h2 class="text-4xl font-bold mb-6">Data Structure & Initial Checks</h2>
     <p>Data structure consists of:</p>
     <div class="my-6 flex justify-center">
-      <img src="images/data-structure.jpg" alt="Data Structure" style="max-width: 500px; width: 100%; height: auto; display: block; margin: 0 auto;">
+      <img src="images/data-structure.jpg" alt="Data Structure" class="data-img" />
     </div>
     <p>
       with a total row count of 5,000 records.
@@ -199,44 +208,39 @@
 </section>
 
 <script>
-  // Fade-in slides
-  const slides = document.querySelectorAll('.slide');
-  const slideObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        const els = entry.target.querySelectorAll('h2,p,img,a.cta-btn');
-        els.forEach((el,i)=>{ el.style.transitionDelay = `${i*0.15}s`; });
-      }
-    });
-  }, { threshold:0.2 });
-  slides.forEach(slide => slideObserver.observe(slide));
-
-  // Mobile sidebar reveal
-  const mobileSidebar = document.getElementById('mobileSidebar');
-  const sidebarHandle = document.getElementById('sidebarHandle');
-  sidebarHandle.addEventListener('mouseenter', ()=> mobileSidebar.classList.remove('-translate-x-full'));
-  mobileSidebar.addEventListener('mouseleave', ()=> mobileSidebar.classList.add('-translate-x-full'));
-
-  // Active link highlighting
-  const navLinks = document.querySelectorAll('.nav-link');
-  const sectionObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        navLinks.forEach(link=>link.classList.remove('active'));
-        const id = entry.target.id;
-        document.querySelectorAll(`.nav-link[href="#${id}"]`).forEach(link=>link.classList.add('active'));
-      }
-    });
-  }, { threshold:0.5 });
-  slides.forEach(slide => sectionObserver.observe(slide));
-
-  // Fade nav on scroll
-  const navContainer = document.getElementById('navContainer');
-  window.addEventListener('scroll', ()=> {
-    navContainer.style.opacity = window.scrollY>50?0.7:1;
+const slides = document.querySelectorAll('.slide');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      const els = entry.target.querySelectorAll('h2,p,img,a.cta-btn');
+      els.forEach((el,i)=>el.style.transitionDelay=`${i*0.15}s`);
+    }
   });
+},{threshold:0.2});
+slides.forEach(slide=>observer.observe(slide));
+
+// Mobile sidebar toggle
+const mobileSidebar = document.getElementById('mobileSidebar');
+const handle = document.getElementById('sidebarHandle');
+handle.addEventListener('mouseenter',()=>mobileSidebar.classList.remove('-translate-x-full'));
+mobileSidebar.addEventListener('mouseleave',()=>mobileSidebar.classList.add('-translate-x-full'));
+
+// Active link highlight
+const navLinks = document.querySelectorAll('.nav-top a, .nav-side a');
+window.addEventListener('scroll', ()=>{
+  let current = '';
+  slides.forEach(slide=>{
+    const top = slide.offsetTop - 80;
+    if(pageYOffset >= top) current = slide.getAttribute('id');
+  });
+  navLinks.forEach(link=>{
+    link.classList.remove('active');
+    if(link.getAttribute('href') === '#' + current) link.classList.add('active');
+  });
+});
 </script>
 
 </body>
 </html>
+
