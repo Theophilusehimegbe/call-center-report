@@ -8,7 +8,6 @@
 <style>
 body { background-color: #f4f9f9; color: #1f2937; font-family: sans-serif; }
 
-/* Slides with reduced spacing */
 .slide {
   min-height: 60vh;
   display: flex;
@@ -34,7 +33,6 @@ a.cta-btn:hover { background-color:#FBBF24; transform: scale(1.03); }
 .slide:nth-child(even){ background-color: #f9fbfb; }
 .slide:nth-child(odd){ background-color: #ffffff; }
 
-/* Desktop Top Nav */
 .nav-top { display:none; }
 @media(min-width:768px) {
   .nav-top {
@@ -56,12 +54,9 @@ a.cta-btn:hover { background-color:#FBBF24; transform: scale(1.03); }
   }
   .nav-top a { color:#1E4F54; font-weight:500; text-decoration:none; padding:0.5rem 0.75rem; border-radius:0.5rem; transition:0.3s; }
   .nav-top a:hover, .nav-top a.active { background-color:#FCD34D; color:#1f2937; }
-
-  /* Increased space between top nav and first slide */
   #slide1 { padding-top: 10rem; }
 }
 
-/* Mobile Sidebar */
 .nav-side {
   display:flex;
   flex-direction:column;
@@ -81,19 +76,15 @@ a.cta-btn:hover { background-color:#FBBF24; transform: scale(1.03); }
 }
 .nav-side a { text-decoration:none; padding:0.5rem 0.75rem; border-radius:0.5rem; font-weight:500; color:#1E4F54; transition:0.3s; }
 .nav-side a:hover, .nav-side a.active { background-color:#FCD34D; color:#1f2937; }
-
-/* Sidebar handle */
 #sidebarHandle { position:fixed; top:50%; left:0; width:8px; height:48px; background:#FCD34D; border-radius:0 4px 4px 0; cursor:pointer; z-index:51; }
 @media(min-width:768px){ .nav-side, #sidebarHandle { display:none; } }
-
-/* Data structure image smaller */
 .data-img { width:10rem; height:auto; margin:0 auto; }
 
+footer p, footer li, footer h2 { font-size:0.875rem; color:#6b7280; font-weight:normal; }
 </style>
 </head>
 <body class="leading-relaxed overflow-x-hidden">
 
-<!-- Desktop Top Nav -->
 <div class="nav-top">
   <a href="#slide1">Project Background</a>
   <a href="#slide2">Data Structure</a>
@@ -103,7 +94,6 @@ a.cta-btn:hover { background-color:#FBBF24; transform: scale(1.03); }
   <a href="#slide9">Expected Outcomes</a>
 </div>
 
-<!-- Mobile Sidebar -->
 <div class="nav-side" id="mobileSidebar">
   <a href="#slide1">Project Background</a>
   <a href="#slide2">Data Structure</a>
@@ -114,7 +104,6 @@ a.cta-btn:hover { background-color:#FBBF24; transform: scale(1.03); }
 </div>
 <div id="sidebarHandle"></div>
 
-<!-- Slides -->
 <section class="slide" id="slide1">
   <div class="max-w-3xl text-center p-6">
     <h2 class="text-4xl font-bold mb-6">Project Background</h2>
@@ -179,10 +168,10 @@ a.cta-btn:hover { background-color:#FBBF24; transform: scale(1.03); }
   <div class="max-w-3xl text-center p-6">
     <h2 class="text-4xl font-bold mb-6">Recommendations</h2>
     <div class="space-y-6 text-left max-w-xl mx-auto">
-      <p>The data shows the problem isn’t call volume, it’s how the workload is managed. Peak traffic consistently overwhelms the team, whether on Saturdays at 11 AM in January, Thursday afternoons in February or Monday at 1 PM in March. Shifting staffing to match those predictable peaks would immediately ease strain and reduce abandonment.</p>
-      <p>Answer times also need tightening. Hovering around 67–68 seconds isn’t terrible, but dropping closer to 45 seconds would cut frustration and abandonment. This isn’t just about speed, it’s about perception. Smarter call routes and introducing a callback option would give customers more control and keep queues from piling up.</p>
-      <p>Resolution rates stuck between 72–74% across all three months point to a deeper issue. Even top agents like Martha and Becky hit the same ceiling, which tells us the barrier is systemic, not individual. Reviewing call logs to identify common unresolved issues and delivering targeted refresher training would help agents move past recurring sticking points. Pairing this with better tools like quick-reference knowledge bases could close the gap.</p>
-      <p>Finally, customer ratings plateaued at 3/5. That split between highly satisfied and highly frustrated callers reflects inconsistent handling. Stronger quality monitoring, structured feedback loops and coaching focused on consistency would smooth out those differences and create a more reliable customer experience across the board.</p>
+      <p>The data shows the problem isn’t call volume, it’s how the workload is managed. Peak traffic consistently overwhelms the team...</p>
+      <p>Answer times also need tightening. Hovering around 67–68 seconds isn’t terrible, but dropping closer to 45 seconds would cut frustration and abandonment...</p>
+      <p>Resolution rates stuck between 72–74% across all three months point to a deeper issue. Even top agents like Martha and Becky hit the same ceiling...</p>
+      <p>Finally, customer ratings plateaued at 3/5. That split between highly satisfied and highly frustrated callers reflects inconsistent handling...</p>
     </div>
   </div>
 </section>
@@ -215,6 +204,16 @@ a.cta-btn:hover { background-color:#FBBF24; transform: scale(1.03); }
   </div>
 </section>
 
+<footer class="slide bg-gray-100 py-12 text-left max-w-3xl mx-auto px-6 mt-16 border-t border-gray-300 rounded-t-lg shadow-inner" id="footerSlide">
+  <h2 class="mb-4">Technical Approach & Tools</h2>
+  <div class="space-y-4 text-justify">
+    <p>Data Cleaning & Preprocessing: The initial phase involved ingesting the raw dataset. This included meticulous cleaning to handle missing values, correct inconsistencies, and ensure data integrity using Excel. I then performed data transformations to prepare the dataset for effective analysis and visualization.</p>
+    <p>Exploratory Data Analysis (EDA): I conducted extensive EDA to understand the underlying structure, distributions, and initial patterns.</p>
+    <p>Data Modeling & Visualization (Power BI): The core of my project’s analytical delivery was built using Power BI. I leveraged this powerful business intelligence tool to allow users to filter and explore data dynamically to uncover insights tailored to their specific needs.</p>
+  </div>
+  <p class="mt-6 text-center">&copy; 2025 Theophilus. All rights reserved.</p>
+</footer>
+
 <script>
 const slides = document.querySelectorAll('.slide');
 const observer = new IntersectionObserver(entries=>{
@@ -228,13 +227,11 @@ const observer = new IntersectionObserver(entries=>{
 },{threshold:0.2});
 slides.forEach(slide=>observer.observe(slide));
 
-// Mobile sidebar toggle
 const mobileSidebar = document.getElementById('mobileSidebar');
 const handle = document.getElementById('sidebarHandle');
 handle.addEventListener('mouseenter',()=>mobileSidebar.classList.remove('-translate-x-full'));
 mobileSidebar.addEventListener('mouseleave',()=>mobileSidebar.classList.add('-translate-x-full'));
 
-// Active link highlight
 const navLinks = document.querySelectorAll('.nav-top a, .nav-side a');
 window.addEventListener('scroll', ()=>{
   let current = '';
@@ -247,9 +244,10 @@ window.addEventListener('scroll', ()=>{
     if(link.getAttribute('href') === '#' + current) link.classList.add('active');
   });
 });
+
+const footer = document.getElementById('footerSlide');
+observer.observe(footer);
 </script>
 
 </body>
 </html>
-
-
