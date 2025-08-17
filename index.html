@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Call Center Report - Slide View</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #f4f9f9; /* soft dashboard background */
+      color: #1f2937;
+    }
+    .slide {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    .slide.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .nav-buttons {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #1e4f54; /* teal from dashboard */
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0.75rem;
+      z-index: 50;
+    }
+    .nav-buttons a {
+      color: #ffffff;
+      font-weight: 500;
+    }
+    .nav-buttons a:hover {
+      color: #fcd34d; /* yellow accent */
+    }
+    h2 {
+      color: #1e4f54; /* teal headings */
+    }
+    a.cta-btn {
+      background-color: #fcd34d;
+      color: #1f2937;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      transition: background 0.3s;
+    }
+    a.cta-btn:hover {
+      background-color: #fbbf24;
+    }
+  </style>
+</head>
+<body class="font-sans leading-relaxed overflow-x-hidden">
+
+  <!-- Navigation Buttons -->
+  <div class="nav-buttons">
+    <a href="#slide1">Project Background</a>
+    <a href="#slide2">Data Structure</a>
+    <a href="#slide3">Executive Summary</a>
+    <a href="#slide4">Insights</a>
+    <a href="#slide8">Recommendations</a>
+    <a href="#slide9">Expected Outcomes</a>
+  </div>
+
+  <!-- Project Background -->
+  <section class="slide" id="slide1">
+    <div class="max-w-3xl text-center p-6">
+      <h2 class="text-4xl font-bold mb-6">Project Background</h2>
+      <p>
+        Call Connect, a customer service center, handles thousands of inbound calls each week across different departments, with growing call volumes and varied customer needs, management needs clarity on how quickly agents respond, how effectively issues are resolved and how satisfied customers feel after interactions. I partnered with the head of customer experience to analyze call response data, identify performance bottlenecks and deliver actionable recommendations to improve speed of answer, resolution consistency and overall customer satisfaction.
+      </p>
+    </div>
+  </section>
+
+  <!-- Data Structure -->
+  <section class="slide" id="slide2">
+    <div class="max-w-3xl text-center p-6">
+      <h2 class="text-4xl font-bold mb-6">Data Structure & Initial Checks</h2>
+      <p>Data structure consists of:</p>
+      <div class="my-6 flex justify-center">
+        <img src="images/data-structure.jpg" alt="Data Structure" class="rounded-lg shadow mb-4" />
+      </div>
+      <p>
+        with a  total row count of 5,000 records.
+        Prior to the beginning of this analysis, a variety of checks were conducted for quality control and familiarization with the data structure using power query editor and then power bi for the final report.
+      </p>
+    </div>
+  </section>
+
+  <!-- Executive Summary -->
+  <section class="slide" id="slide3">
+    <div class="max-w-3xl text-center p-6">
+      <h2 class="text-4xl font-bold mb-6">Executive Summary</h2>
+      <p>
+        The call center handled 5,000 calls in total, with resolution rates of 73%. Despite maintaining an average talk time of 3m 44s, unanswered calls remain high at 19% and customer satisfaction averaged just 3/5 stars. To improve service quality, the focus should be on reducing unanswered calls, improving resolution consistency, trimming answer speed and addressing peak hour staffing gaps.
+      </p>
+      <div class="mt-8">
+        <a href="https://app.powerbi.com/view?r=eyJrIjoiOTUxYjU1NGItNGIwMi00ZDZiLTkzM2UtY2JhZDhjMmI0ODY4IiwidCI6IjE5NDVhZTU1LTc4YTAtNDUyMC05MjY0LTAwZDJkNjBhYTQyOCJ9" target="_blank" class="cta-btn">
+          View Interactive Dashboard
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Insights Deep-Dive January -->
+  <section class="slide" id="slide4">
+    <div class="max-w-3xl text-center p-6">
+      <h2 class="text-4xl font-bold mb-6">Insights Deep-Dive</h2>
+      <div class="my-6 flex justify-center">
+        <img src="images/january-dashboard.jpg" alt="January Dashboard" class="rounded-lg shadow mb-4" />
+      </div>
+      <p>
+        In January, the call center managed 1,772 calls. Resolution sat at 74%, but nearly 1 in 5 calls (317) went unanswered. The busiest hour was 11 AM and Saturdays proved the hardest to handle, where call volumes spiked and the agents struggled to keep up. Customer ratings averaged 3/5, with about 656 people giving 4-5 stars, while 273 gave 1-2 stars, pointing to uneven service quality. Even top agent Martha, who answered 78% of her 220 calls, showed the same pattern: a resolution rate of 69%, well below expectations.
+      </p>
+    </div>
+  </section>
+
+  <!-- Insights Deep-Dive February -->
+  <section class="slide" id="slide5">
+    <div class="max-w-3xl text-center p-6">
+      <div class="my-6 flex justify-center">
+        <img src="images/february-dashboard.png" alt="February Dashboard" class="rounded-lg shadow mb-4" />
+      </div>
+      <p>
+        February brought fewer calls (1,616), a drop of about 9% from January. With a lighter volume, you’d expect things to improve, but instead the opposite happened. Resolutions fell to 72%, unanswered calls stayed high at 318 and the same peak hour pressures (notably Thursday afternoons at 1 PM) pushed abandonment up. Ratings held steady at 3/5, split between satisfied customers who got quick help and frustrated ones who waited too long or left without solutions.
+      </p>
+    </div>
+  </section>
+
+  <!-- Insights Deep-Dive March -->
+  <section class="slide" id="slide6">
+    <div class="max-w-3xl text-center p-6">
+      <div class="my-6 flex justify-center">
+        <img src="images/march-dashboard.jpg" alt="March Dashboard" class="rounded-lg shadow mb-4" />
+      </div>
+      <p>
+        March added another twist. Total calls slipped slightly again to 1,612, but the resolution rate only ticked up to 73%, showing little real progress. Unanswered calls stayed stubbornly high at 311 (19%), this time clustering heavily on Monday afternoons around 1 PM, the single busiest hour of the month. Ratings again stuck at 3/5, with 659 customers leaving 4-5 stars, while 273 scored just 1-2 stars, echoing the same issues from the previous months. Top agent Becky did well individually, answering 84% of her 203 calls with a 76% resolution rate but her performance still mirrored the broader weaknesses.
+      </p>
+    </div>
+  </section>
+
+  <!-- Takeaways -->
+  <section class="slide" id="slide7">
+    <div class="max-w-3xl text-center p-6">
+      <h2 class="text-4xl font-bold mb-6">Takeaways</h2>
+      <p>
+        Across these three months, the message is clear: volume isn’t the root problem. Whether calls rise or fall, the same cracks show which are long waits, uneven resolution and workload spikes during peak hours. The consistency of 3/5 ratings across the quarter proves customers aren’t seeing meaningful improvement. Strong individuals like Martha and Becky can’t offset systemic weaknesses. The center needs structural fixes in speed of answer, smarter call routing and staffing alignment with traffic peaks to break this cycle.
+      </p>
+    </div>
+  </section>
+
+  <!-- Recommendations -->
+  <section class="slide" id="slide8">
+    <div class="max-w-3xl text-center p-6">
+      <h2 class="text-4xl font-bold mb-6">Recommendations</h2>
+      <div class="space-y-6 text-left max-w-xl mx-auto">
+        <p>
+          The data shows the problem isn’t call volume, it’s how the workload is managed. Peak traffic consistently overwhelms the team, whether on Saturdays at 11 AM in January, Thursday afternoons in February or Monday at 1 PM in March. Shifting staffing to match those predictable peaks would immediately ease strain and reduce abandonment.
+        </p>
+        <p>
+          Answer times also need tightening. Hovering around 67–68 seconds isn’t terrible, but dropping closer to 45 seconds would cut frustration and abandonment. This isn’t just about speed, it’s about perception. Smarter call routes and introducing a callback option would give customers more control and keep queues from piling up.
+        </p>
+        <p>
+          Resolution rates stuck between 72–74% across all three months point to a deeper issue. Even top agents like Martha and Becky hit the same ceiling, which tells us the barrier is systemic, not individual. Reviewing call logs to identify common unresolved issues and delivering targeted refresher training would help agents move past recurring sticking points. Pairing this with better tools like quick-reference knowledge bases could close the gap.
+        </p>
+        <p>
+          Finally, customer ratings plateaued at 3/5. That split between highly satisfied and highly frustrated callers reflects inconsistent handling. Stronger quality monitoring, structured feedback loops and coaching focused on consistency would smooth out those differences and create a more reliable customer experience across the board.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expected Outcomes -->
+  <section class="slide" id="slide9">
+    <div class="max-w-3xl text-center p-6">
+      <h2 class="text-4xl font-bold mb-6">Expected Outcomes</h2>
+      <ul class="space-y-4 list-disc text-left max-w-xl mx-auto">
+        <li><strong>Lower Abandonment:</strong> With faster answer times and better peak-hour coverage, unanswered calls should drop from 19% to below 12%.</li>
+        <li><strong>Higher Resolution:</strong> Targeted training and better tools can push resolution rates toward 80%, reducing repeat calls.</li>
+        <li><strong>Improved Ratings:</strong> Consistent handling and shorter waits should lift average customer satisfaction from 3/5 closer to 4/5.</li>
+        <li><strong>Operational Efficiency:</strong> Smarter scheduling and routing will balance workloads, ease agent stress and improve overall productivity.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Assumptions & Caveats -->
+  <section class="slide" id="slide10">
+    <div class="max-w-3xl text-center p-6">
+      <h2 class="text-4xl font-bold mb-6">Assumptions & Caveats</h2>
+      <ul class="space-y-4 list-disc text-left max-w-xl mx-auto">
+        <li>This report is not tied to any specific section, exploration base of different sections, then we can use the filter in the interactive dashboard.</li>
+        <li>Customer ratings are self-reported and may be biased towards extreme experiences.</li>
+        <li>Resolution rate may not capture full customer sentiment, some “resolved” cases may still leave customers dissatisfied.</li>
+      </ul>
+    </div>
+  </section>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  slides.forEach(slide => observer.observe(slide));
+</script>
+
+</body>
+</html>
