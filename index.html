@@ -6,7 +6,7 @@
 <title>Call Center Report - Slide View</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-body { background-color: #f4f9f9; color: #1f2937; }
+body { background-color: #f4f9f9; color: #1f2937; font-family: sans-serif; }
 
 /* Slides with reduced spacing */
 .slide {
@@ -23,44 +23,75 @@ body { background-color: #f4f9f9; color: #1f2937; }
 }
 .slide:hover { transform: translateY(-5px); box-shadow: 0 15px 25px rgba(0,0,0,0.1); }
 .slide.visible { opacity: 1; transform: translateY(0); }
-.slide h2 { opacity:0; transform:translateY(10px); transition:opacity 1s, transform 1s; }
+.slide h2 { opacity:0; transform:translateY(10px); transition:opacity 1s, transform 1s; color: #1E4F54; }
 .slide.visible h2 { opacity:1; transform:translateY(0); }
-.slide p { opacity:0; transform:translateY(5px); transition:opacity 1s, transform 1s; text-align:justify; }
-.slide.visible p { opacity:1; transform:translateY(0); }
+.slide p, .slide li { opacity:0; transform:translateY(5px); transition:opacity 1s, transform 1s; text-align:justify; color:#1f2937; }
+.slide.visible p, .slide.visible li { opacity:1; transform:translateY(0); }
 .slide img { opacity:0; transform:scale(0.98); transition:opacity 1s, transform 1s; }
 .slide.visible img { opacity:1; transform:scale(1); }
-.slide li { text-align: justify; }
-a.cta-btn { background-color:#fcd34d; color:#1f2937; font-weight:600; padding:0.75rem 1.5rem; border-radius:0.5rem; transition: background 0.3s, transform 0.3s; }
-a.cta-btn:hover { background-color:#fbbf24; transform: scale(1.03); }
-h2 { color: #1e4f54; }
+a.cta-btn { background-color:#FCD34D; color:#1f2937; font-weight:600; padding:0.75rem 1.5rem; border-radius:0.5rem; transition: background 0.3s, transform 0.3s; }
+a.cta-btn:hover { background-color:#FBBF24; transform: scale(1.03); }
 .slide:nth-child(even){ background-color: #f9fbfb; }
 .slide:nth-child(odd){ background-color: #ffffff; }
 
 /* Desktop Top Nav */
 .nav-top { display:none; }
 @media(min-width:768px) {
-  .nav-top { display:flex; justify-content:center; gap:1.5rem; position:fixed; top:0; left:50%; transform:translateX(-50%); background:rgba(255,255,255,0.3); color:#1e4f54; padding:0.75rem 1.5rem; border-radius:1rem; box-shadow:0 10px 20px rgba(0,0,0,0.15); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.4); z-index:50; }
-  .nav-top a { color:#1e4f54; font-weight:500; text-decoration:none; padding:0.5rem 0.75rem; border-radius:0.5rem; transition:0.3s; }
-  .nav-top a:hover, .nav-top a.active { background-color:#fcd34d; color:#1f2937; }
+  .nav-top {
+    display:flex;
+    justify-content:center;
+    gap:1.5rem;
+    position:fixed;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    background:rgba(255,255,255,0.3);
+    color:#1E4F54;
+    padding:0.75rem 1.5rem;
+    border-radius:1rem;
+    box-shadow:0 10px 20px rgba(0,0,0,0.15);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.4);
+    z-index:50;
+  }
+  .nav-top a { color:#1E4F54; font-weight:500; text-decoration:none; padding:0.5rem 0.75rem; border-radius:0.5rem; transition:0.3s; }
+  .nav-top a:hover, .nav-top a.active { background-color:#FCD34D; color:#1f2937; }
 
   /* Increased space between top nav and first slide */
   #slide1 { padding-top: 10rem; }
 }
 
 /* Mobile Sidebar */
-.nav-side { display:flex; flex-direction:column; position:fixed; top:0; left:0; height:100%; width:64; background:rgba(255,255,255,0.9); backdrop-filter:blur(10px); border-right:1px solid rgba(255,255,255,0.4); transform:translateX(-100%); transition:transform 0.3s; z-index:50; padding:1rem; gap:1rem; }
-.nav-side a { text-decoration:none; padding:0.5rem 0.75rem; border-radius:0.5rem; font-weight:500; color:#1e4f54; transition:0.3s; }
-.nav-side a:hover, .nav-side a.active { background-color:#fcd34d; color:#1f2937; }
+.nav-side {
+  display:flex;
+  flex-direction:column;
+  position:fixed;
+  top:0;
+  left:0;
+  height:100%;
+  width:64;
+  background:rgba(255,255,255,0.9);
+  backdrop-filter:blur(10px);
+  border-right:1px solid rgba(255,255,255,0.4);
+  transform:translateX(-100%);
+  transition:transform 0.3s;
+  z-index:50;
+  padding:1rem;
+  gap:1rem;
+}
+.nav-side a { text-decoration:none; padding:0.5rem 0.75rem; border-radius:0.5rem; font-weight:500; color:#1E4F54; transition:0.3s; }
+.nav-side a:hover, .nav-side a.active { background-color:#FCD34D; color:#1f2937; }
 
 /* Sidebar handle */
-#sidebarHandle { position:fixed; top:50%; left:0; width:8px; height:48px; background:#fcd34d; border-radius:0 4px 4px 0; cursor:pointer; z-index:51; }
+#sidebarHandle { position:fixed; top:50%; left:0; width:8px; height:48px; background:#FCD34D; border-radius:0 4px 4px 0; cursor:pointer; z-index:51; }
 @media(min-width:768px){ .nav-side, #sidebarHandle { display:none; } }
 
 /* Data structure image smaller */
 .data-img { width:10rem; height:auto; margin:0 auto; }
+
 </style>
 </head>
-<body class="font-sans leading-relaxed overflow-x-hidden">
+<body class="leading-relaxed overflow-x-hidden">
 
 <!-- Desktop Top Nav -->
 <div class="nav-top">
@@ -87,9 +118,7 @@ h2 { color: #1e4f54; }
 <section class="slide" id="slide1">
   <div class="max-w-3xl text-center p-6">
     <h2 class="text-4xl font-bold mb-6">Project Background</h2>
-    <p>
-      Call Connect, a customer service center, handles thousands of inbound calls each week across different departments, with growing call volumes and varied customer needs, management needs clarity on how quickly agents respond, how effectively issues are resolved and how satisfied customers feel after interactions. I partnered with the head of customer experience to analyze call response data, identify performance bottlenecks and deliver actionable recommendations to improve speed of answer, resolution consistency and overall customer satisfaction.
-    </p>
+    <p>Call Connect, a customer service center, handles thousands of inbound calls each week across different departments, with growing call volumes and varied customer needs, management needs clarity on how quickly agents respond, how effectively issues are resolved and how satisfied customers feel after interactions. I partnered with the head of customer experience to analyze call response data, identify performance bottlenecks and deliver actionable recommendations to improve speed of answer, resolution consistency and overall customer satisfaction.</p>
   </div>
 </section>
 
@@ -100,19 +129,14 @@ h2 { color: #1e4f54; }
     <div class="my-6 flex justify-center">
       <img src="images/data-structure.jpg" alt="Data Structure" class="data-img" />
     </div>
-    <p>
-      with a total row count of 5,000 records.
-      Prior to the beginning of this analysis, a variety of checks were conducted for quality control and familiarization with the data structure using power query editor and then power bi for the final report.
-    </p>
+    <p>with a total row count of 5,000 records. Prior to the beginning of this analysis, a variety of checks were conducted for quality control and familiarization with the data structure using power query editor and then power bi for the final report.</p>
   </div>
 </section>
 
 <section class="slide" id="slide3">
   <div class="max-w-3xl text-center p-6">
     <h2 class="text-4xl font-bold mb-6">Executive Summary</h2>
-    <p>
-      The call center handled 5,000 calls in total, with resolution rates of 73%. Despite maintaining an average talk time of 3m 44s, unanswered calls remain high at 19% and customer satisfaction averaged just 3/5 stars. To improve service quality, the focus should be on reducing unanswered calls, improving resolution consistency, trimming answer speed and addressing peak hour staffing gaps.
-    </p>
+    <p>The call center handled 5,000 calls in total, with resolution rates of 73%. Despite maintaining an average talk time of 3m 44s, unanswered calls remain high at 19% and customer satisfaction averaged just 3/5 stars. To improve service quality, the focus should be on reducing unanswered calls, improving resolution consistency, trimming answer speed and addressing peak hour staffing gaps.</p>
   </div>
 </section>
 
@@ -122,9 +146,7 @@ h2 { color: #1e4f54; }
     <div class="my-6 flex justify-center">
       <img src="images/january-dashboard.jpg" alt="January Dashboard" class="rounded-lg shadow mb-4" />
     </div>
-    <p>
-      In January, the call center managed 1,772 calls. Resolution sat at 74%, but nearly 1 in 5 calls (317) went unanswered. The busiest hour was 11 AM and Saturdays proved the hardest to handle, where call volumes spiked and the agents struggled to keep up. Customer ratings averaged 3/5, with about 656 people giving 4-5 stars, while 273 gave 1-2 stars, pointing to uneven service quality. Even top agent Martha, who answered 78% of her 220 calls, showed the same pattern: a resolution rate of 69%, well below expectations.
-    </p>
+    <p>In January, the call center managed 1,772 calls. Resolution sat at 74%, but nearly 1 in 5 calls (317) went unanswered. The busiest hour was 11 AM and Saturdays proved the hardest to handle, where call volumes spiked and the agents struggled to keep up. Customer ratings averaged 3/5, with about 656 people giving 4-5 stars, while 273 gave 1-2 stars, pointing to uneven service quality. Even top agent Martha, who answered 78% of her 220 calls, showed the same pattern: a resolution rate of 69%, well below expectations.</p>
   </div>
 </section>
 
@@ -133,9 +155,7 @@ h2 { color: #1e4f54; }
     <div class="my-6 flex justify-center">
       <img src="images/february-dashboard.jpg" alt="February Dashboard" class="rounded-lg shadow mb-4" />
     </div>
-    <p>
-      February brought fewer calls (1,616), a drop of about 9% from January. With a lighter volume, you’d expect things to improve, but instead the opposite happened. Resolutions fell to 72%, unanswered calls stayed high at 318 and the same peak hour pressures (notably Thursday afternoons at 1 PM) pushed abandonment up. Ratings held steady at 3/5, split between satisfied customers who got quick help and frustrated ones who waited too long or left without solutions.
-    </p>
+    <p>February brought fewer calls (1,616), a drop of about 9% from January. With a lighter volume, you’d expect things to improve, but instead the opposite happened. Resolutions fell to 72%, unanswered calls stayed high at 318 and the same peak hour pressures (notably Thursday afternoons at 1 PM) pushed abandonment up. Ratings held steady at 3/5, split between satisfied customers who got quick help and frustrated ones who waited too long or left without solutions.</p>
   </div>
 </section>
 
@@ -144,18 +164,14 @@ h2 { color: #1e4f54; }
     <div class="my-6 flex justify-center">
       <img src="images/march-dashboard.jpg" alt="March Dashboard" class="rounded-lg shadow mb-4" />
     </div>
-    <p>
-      March added another twist. Total calls slipped slightly again to 1,612, but the resolution rate only ticked up to 73%, showing little real progress. Unanswered calls stayed stubbornly high at 311 (19%), this time clustering heavily on Monday afternoons around 1 PM, the single busiest hour of the month. Ratings again stuck at 3/5, with 659 customers leaving 4-5 stars, while 273 scored just 1-2 stars, echoing the same issues from the previous months. Top agent Becky did well individually, answering 84% of her 203 calls with a 76% resolution rate but her performance still mirrored the broader weaknesses.
-    </p>
+    <p>March added another twist. Total calls slipped slightly again to 1,612, but the resolution rate only ticked up to 73%, showing little real progress. Unanswered calls stayed stubbornly high at 311 (19%), this time clustering heavily on Monday afternoons around 1 PM, the single busiest hour of the month. Ratings again stuck at 3/5, with 659 customers leaving 4-5 stars, while 273 scored just 1-2 stars, echoing the same issues from the previous months. Top agent Becky did well individually, answering 84% of her 203 calls with a 76% resolution rate but her performance still mirrored the broader weaknesses.</p>
   </div>
 </section>
 
 <section class="slide" id="slide7">
   <div class="max-w-3xl text-center p-6">
     <h2 class="text-4xl font-bold mb-6">Takeaways</h2>
-    <p>
-      Across these three months, the message is clear: volume isn’t the root problem. Whether calls rise or fall, the same cracks show which are long waits, uneven resolution and workload spikes during peak hours. The consistency of 3/5 ratings across the quarter proves customers aren’t seeing meaningful improvement. Strong individuals like Martha and Becky can’t offset systemic weaknesses. The center needs structural fixes in speed of answer, smarter call routing and staffing alignment with traffic peaks to break this cycle.
-    </p>
+    <p>Across these three months, the message is clear: volume isn’t the root problem. Whether calls rise or fall, the same cracks show which are long waits, uneven resolution and workload spikes during peak hours. The consistency of 3/5 ratings across the quarter proves customers aren’t seeing meaningful improvement. Strong individuals like Martha and Becky can’t offset systemic weaknesses. The center needs structural fixes in speed of answer, smarter call routing and staffing alignment with traffic peaks to break this cycle.</p>
   </div>
 </section>
 
@@ -163,18 +179,10 @@ h2 { color: #1e4f54; }
   <div class="max-w-3xl text-center p-6">
     <h2 class="text-4xl font-bold mb-6">Recommendations</h2>
     <div class="space-y-6 text-left max-w-xl mx-auto">
-      <p>
-        The data shows the problem isn’t call volume, it’s how the workload is managed. Peak traffic consistently overwhelms the team, whether on Saturdays at 11 AM in January, Thursday afternoons in February or Monday at 1 PM in March. Shifting staffing to match those predictable peaks would immediately ease strain and reduce abandonment.
-      </p>
-      <p>
-        Answer times also need tightening. Hovering around 67–68 seconds isn’t terrible, but dropping closer to 45 seconds would cut frustration and abandonment. This isn’t just about speed, it’s about perception. Smarter call routes and introducing a callback option would give customers more control and keep queues from piling up.
-      </p>
-      <p>
-        Resolution rates stuck between 72–74% across all three months point to a deeper issue. Even top agents like Martha and Becky hit the same ceiling, which tells us the barrier is systemic, not individual. Reviewing call logs to identify common unresolved issues and delivering targeted refresher training would help agents move past recurring sticking points. Pairing this with better tools like quick-reference knowledge bases could close the gap.
-      </p>
-      <p>
-        Finally, customer ratings plateaued at 3/5. That split between highly satisfied and highly frustrated callers reflects inconsistent handling. Stronger quality monitoring, structured feedback loops and coaching focused on consistency would smooth out those differences and create a more reliable customer experience across the board.
-      </p>
+      <p>The data shows the problem isn’t call volume, it’s how the workload is managed. Peak traffic consistently overwhelms the team, whether on Saturdays at 11 AM in January, Thursday afternoons in February or Monday at 1 PM in March. Shifting staffing to match those predictable peaks would immediately ease strain and reduce abandonment.</p>
+      <p>Answer times also need tightening. Hovering around 67–68 seconds isn’t terrible, but dropping closer to 45 seconds would cut frustration and abandonment. This isn’t just about speed, it’s about perception. Smarter call routes and introducing a callback option would give customers more control and keep queues from piling up.</p>
+      <p>Resolution rates stuck between 72–74% across all three months point to a deeper issue. Even top agents like Martha and Becky hit the same ceiling, which tells us the barrier is systemic, not individual. Reviewing call logs to identify common unresolved issues and delivering targeted refresher training would help agents move past recurring sticking points. Pairing this with better tools like quick-reference knowledge bases could close the gap.</p>
+      <p>Finally, customer ratings plateaued at 3/5. That split between highly satisfied and highly frustrated callers reflects inconsistent handling. Stronger quality monitoring, structured feedback loops and coaching focused on consistency would smooth out those differences and create a more reliable customer experience across the board.</p>
     </div>
   </div>
 </section>
@@ -243,4 +251,5 @@ window.addEventListener('scroll', ()=>{
 
 </body>
 </html>
+
 
